@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Commandes nettoyées et typées."
+    columns:
+      - name: order_id
+        description: "Identifiant unique de la commande."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        tests:
+          - not_null
+
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed', 'cancelled', 'returned']
+
+  - name: stg_customers
+    description: "Clients nettoyés et typés."
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+      - name: email
+        tests:
+          - not_null
+
+      - name: segment
+        tests:
+          - accepted_values:
+              values: ['STANDARD', 'PREMIUM', 'VIP']
+
+  - name: stg_products
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_campaigns
+    columns:
+      - name: campaign_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_returns
+    columns:
+      - name: return_id
+        tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        tests:
+          - not_null

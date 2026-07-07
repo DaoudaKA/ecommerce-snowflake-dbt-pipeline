@@ -1,0 +1,68 @@
+version: 2
+
+sources:
+  - name: raw
+    database: ECOMMERCE_DB
+    schema: RAW
+    description: "Données brutes ingérées depuis les systèmes sources, jamais modifiées."
+
+    tables:
+      - name: orders
+        description: "Commandes passées par les clients."
+        columns:
+          - name: order_id
+            description: "Identifiant unique de la commande."
+          - name: customer_id
+            description: "Client ayant passé la commande."
+          - name: product_id
+            description: "Produit commandé."
+          - name: campaign_id
+            description: "Campagne marketing associée à la commande, si applicable."
+          - name: status
+            description: "Statut de la commande (completed, cancelled, returned)."
+
+      - name: customers
+        description: "Clients enregistrés sur la plateforme e-commerce."
+        columns:
+          - name: customer_id
+            description: "Identifiant unique du client."
+          - name: email
+            description: "Adresse email du client."
+          - name: segment
+            description: "Segment client (Standard, Premium, VIP)."
+
+      - name: products
+        description: "Catalogue produits."
+        columns:
+          - name: product_id
+            description: "Identifiant unique du produit."
+          - name: category
+            description: "Catégorie du produit."
+          - name: is_active
+            description: "Indique si le produit est toujours en vente."
+
+      - name: campaigns
+        description: "Campagnes marketing."
+        columns:
+          - name: campaign_id
+            description: "Identifiant unique de la campagne."
+          - name: channel
+            description: "Canal de diffusion (Email, Facebook, Instagram, Google Ads)."
+
+      - name: returns
+        description: "Retours produits effectués par les clients."
+        columns:
+          - name: return_id
+            description: "Identifiant unique du retour."
+          - name: order_id
+            description: "Commande associée au retour."
+
+      - name: events
+        description: "Événements clickstream (navigation, ajout panier, achat, recherche)."
+        columns:
+          - name: event_id
+            description: "Identifiant unique de l'événement."
+          - name: event_type
+            description: "Type d'événement (page_view, add_to_cart, purchase, search)."
+          - name: properties
+            description: "Données JSON dynamiques associées à l'événement (VARIANT)."

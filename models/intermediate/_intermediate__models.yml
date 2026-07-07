@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: int_orders_enriched
+    description: "Commandes enrichies avec les informations client, produit et campagne associées."
+
+  - name: int_orders_with_returns
+    description: "Commandes enrichies, avec indicateur et détails de retour éventuel."

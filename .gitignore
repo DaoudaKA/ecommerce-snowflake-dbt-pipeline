@@ -1,0 +1,30 @@
+# dbt
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Fichiers de connexion Snowflake (JAMAIS committer les identifiants)
+profiles.yml
+*.env
+.env
+
+# Environnement virtuel Python
+dbt-env/
+venv/
+__pycache__/
+*.pyc
+
+# Fichiers Power BI (souvent volumineux et contiennent parfois des données)
+*.pbix
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+
+# CSV de test générés localement
+new_orders.csv
